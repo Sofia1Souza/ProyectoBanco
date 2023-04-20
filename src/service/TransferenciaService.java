@@ -20,7 +20,7 @@ public Transferencia HacerTransferencia( Cuenta cuenta1,Cuenta cuenta2){
     if (objTransferencia.getMonto()<= cuenta1.getSaldo()){
         cuenta1.setSaldo(cuenta1.getSaldo()-objTransferencia.getMonto());
         cuenta2.setSaldo(cuenta2.getSaldo()+objTransferencia.getMonto());
-        System.out.println("Operacion exitosa de la cuenta"+ cuenta1);
+        System.out.println("Operacion exitosa de la cuenta"+ cuenta1);// probando git
 
     }else
         System.out.println("Saldo insuficiente");

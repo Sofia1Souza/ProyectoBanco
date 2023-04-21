@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class CuentaService {
 
-    public Cuenta crearCuenta(Cliente cliente) {
+    public Cuenta crearCuenta(Cliente cliente, int sucursal) {
 
      Cuenta objCuenta= new Cuenta();
         Random random= new Random();
@@ -16,6 +16,7 @@ public class CuentaService {
      objCuenta.setNumCta(" "+(cliente.getDni())+ aleatorio);
      objCuenta.setSaldo(10000);
      objCuenta.setCliente(cliente);
+     objCuenta.setSucursal(sucursal);
 
      return objCuenta;
     }

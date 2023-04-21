@@ -7,17 +7,28 @@ public  class Cuenta {
     private String numCta;
     private double saldo ;
     private Cliente cliente;
-
+    private int sucursal;
     private List<Transferencia> transferencias;
 
     public Cuenta() {
     }
 
-    public Cuenta(String numCta, double saldo, Cliente cliente,  List<Transferencia> transferencias) {
+
+
+    public Cuenta(String numCta, double saldo, Cliente cliente, int sucursal, List<Transferencia> transferencias) {
         this.numCta = numCta;
         this.saldo = saldo;
         this.cliente = cliente;
+        this.sucursal = sucursal;
         this.transferencias = transferencias;
+    }
+
+    public int getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(int sucursal) {
+        this.sucursal = sucursal;
     }
 
     public String getNumCta() {

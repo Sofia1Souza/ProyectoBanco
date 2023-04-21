@@ -8,17 +8,16 @@ public class Cliente {
     private String apellido;
     private String dni;
 
-    private List<Cuenta> cuentas;
+    private Cuenta cuenta;
 
     public Cliente() {
-       cuentas = new ArrayList<Cuenta>();
     }
 
-    public Cliente(String nombre, String apellido, String dni, List<Cuenta> cuentas) {
+    public Cliente(String nombre, String apellido, String dni, Cuenta cuenta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.cuentas = cuentas;
+        this.cuenta = cuenta;
     }
 
     public String getNombre() {
@@ -45,12 +44,12 @@ public class Cliente {
         this.dni = dni;
     }
 
-    public List<Cuenta> getCuentas() {
-        return cuentas;
+    public Cuenta getCuenta() {
+        return cuenta;
     }
 
-    public void setCuentas(List<Cuenta> cuentas) {
-        this.cuentas = cuentas;
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class Cliente {
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", dni='" + dni + '\'' +
-                //", cuentas=" + cuentas +
+                //", cuenta=" + cuenta +
                 '}';
     }
 }

@@ -19,10 +19,17 @@ public class ClienteService {
      System.out.println("Ingrese su dni");
      cliente.setDni(leer.nextLine());
 
-     System.out.println("Ha generado su cuenta correctamente");
+     System.out.println("Elija la sucursal con la que desea operar");
+     int sucursal= leer.nextInt();
+  // validar opciones
+     if(sucursal==1 || sucursal==2){
+         cliente.setCuenta(objCuentaService.crearCuenta(cliente,sucursal));
+         System.out.println("Ha generado su cuenta correctamente");
+     }else {
+         System.out.println("Opción invalida");
+     }
 
-     cliente.getCuentas().add(objCuentaService.crearCuenta(cliente));
-     System.out.println(cliente.getCuentas());
+     System.out.println(cliente.getCuenta());
 
      return cliente;
  }

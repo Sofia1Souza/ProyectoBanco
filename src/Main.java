@@ -10,18 +10,18 @@ public class Main {
     public static void main(String[] args) {
 
         BancoService objBancoService= new BancoService();
-        ClienteService service = new ClienteService();
+        ClienteService objClienteservice = new ClienteService();
 
 
         objBancoService.crearBanco(1,"Av Saez Peña Cap Fed Argentina");
         objBancoService.crearBanco(2,"Calle 34 Cartagena Colombia");
 
-        service.CrearCliente();
-        service.CrearCliente();
+        objClienteservice.CrearCliente();
+        objClienteservice.CrearCliente();
 
 
-   //TransferenciaService objServiceTransferencia = new TransferenciaService();
-   //objServiceTransferencia.hacerTransferencia();
+   TransferenciaService objServiceTransferencia = new TransferenciaService();
+   objServiceTransferencia.hacerTransferencia();
 
 
 

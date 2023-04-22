@@ -43,7 +43,7 @@ public class BancoService {
     }
 
     public void agregarTransferencias() {
-        objtransfservice.hacerTransferencia(bancos);
+        Transferencia transferencia=objtransfservice.hacerTransferencia(bancos);
 
 
     }

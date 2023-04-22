@@ -1,11 +1,9 @@
 package service;
 
 import entity.Banco;
-import entity.Cliente;
 import entity.Cuenta;
 import entity.Transferencia;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,7 +38,6 @@ public class TransferenciaService {
 
             }
 
-
         }
         for (Banco banco : bancos) {
             for (Cuenta cuenta : banco.getCuentas()) {
@@ -54,5 +51,8 @@ public class TransferenciaService {
 
         }
         return objTransferencia;
+    }
+
+    public void hacerTransferencia(boolean b) {
     }
 }

@@ -29,7 +29,7 @@ public class BancoService {
     //agregrar clientes a la lista de clientes del banco,entonces capturo el cliente y con un for each recorro la lista de bancs
     // que tengo,ahi le digo si la cta y el nume de sucursal es igual le agrego el banco el cliente
 
-    public void agregarClientes() {
+    public void agregarListas() {
         Cliente cliente = objClienteSer.CrearCliente();
 
         for (Banco banco : bancos) {
@@ -43,7 +43,7 @@ public class BancoService {
     }
 
     public void agregarTransferencias() {
-        objtransfservice.HacerTransferencia(bancos);
+        objtransfservice.hacerTransferencia(bancos);
 
 
     }

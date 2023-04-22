@@ -1,7 +1,10 @@
+import entity.Banco;
 import service.BancoService;
 import service.ClienteService;
 import service.CuentaService;
 import service.TransferenciaService;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +20,8 @@ public class Main {
         service.CrearCliente();
 
 
+   //TransferenciaService objServiceTransferencia = new TransferenciaService();
+   //objServiceTransferencia.hacerTransferencia();
 
 
 

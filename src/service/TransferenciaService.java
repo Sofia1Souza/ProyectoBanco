@@ -12,31 +12,47 @@ import java.util.Scanner;
 public class TransferenciaService {
 
 
-public Transferencia HacerTransferencia(List<Banco> bancos ){
-    Scanner leer=new Scanner(System.in);
-    Transferencia objTransferencia = new Transferencia();
-    System.out.println("Cuanto dinero desea transferir");
-    objTransferencia.setMonto(leer.nextDouble());
-    //tengo una lista de banco lo unico para trabajar,fijarme ls tros metods de lista
-    for (Banco banco:bancos
-            if
-         ) {
+    public Transferencia hacerTransferencia(List<Banco> bancos) {
+
+        Scanner leer = new Scanner(System.in);
+        Transferencia objTransferencia = new Transferencia();
+        System.out.println("¿A que cuenta  desea transferir?");
+
+        for (Banco banco : bancos) {
+            for (Cuenta cuenta : banco.getCuentas()) {
+                System.out.println(cuenta.getNumCta());
+            }
+        }
+
+        String opcion = leer.nextLine();
+
+        System.out.println("¿Que monto desea transferir?");
+        objTransferencia.setMonto(leer.nextDouble());
+
+        for (Banco banco : bancos) {
+            for (Cuenta cuenta : banco.getCuentas()) {
+                if (!cuenta.getNumCta().equals(opcion)) {
+                    cuenta.setSaldo(cuenta.getSaldo() - objTransferencia.getMonto());
+
+                } else {
+                    System.out.println("Ha seleccionado su propia cuenta");
+                }
+
+            }
 
 
+        }
+        for (Banco banco : bancos) {
+            for (Cuenta cuenta : banco.getCuentas()) {
+                if (cuenta.getNumCta().equals(opcion)) {
+                    cuenta.setSaldo(cuenta.getSaldo() + objTransferencia.getMonto());
+
+
+                }
+
+            }
+
+        }
+        return objTransferencia;
     }
-
-
-    if (objTransferencia.getMonto()<= cuenta1.getSaldo()){
-        cuenta1.setSaldo(cuenta1.getSaldo()-objTransferencia.getMonto());
-        cuenta2.setSaldo(cuenta2.getSaldo()+objTransferencia.getMonto());
-        System.out.println("Operacion exitosa de la cuenta"+ cuenta1);// probando git
-
-    }else
-        System.out.println("Saldo insuficiente");
-    return objTransferencia;
-
-
 }
-
-    }
-

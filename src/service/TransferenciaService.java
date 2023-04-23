@@ -1,58 +1,32 @@
 package service;
 
-import entity.Banco;
-import entity.Cuenta;
-import entity.Transferencia;
+import entities.Banco;
+import entities.Cuenta;
+import entities.Transferencia;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TransferenciaService {
+    BancoService objBancoService = new BancoService();
 
+    public void hacerTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto) {
 
-    public Transferencia hacerTransferencia(List<Banco> bancos) {
+        if (cuentaOrigen.getSaldo() >= monto) {
+            cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - monto);
+            cuentaDestino.setSaldo(cuentaDestino.getSaldo() + monto);
 
-        Scanner leer = new Scanner(System.in);
-        Transferencia objTransferencia = new Transferencia();
-        System.out.println("¿A que cuenta  desea transferir?");
-
-        for (Banco banco : bancos) {
-            for (Cuenta cuenta : banco.getCuentas()) {
-                System.out.println(cuenta.getNumCta());
-            }
+            int numTransferencia = new Random().nextInt(100) + 1;
+            Transferencia objTransferencia = new Transferencia(numTransferencia, cuentaOrigen, cuentaDestino, monto);
+            List<Transferencia> transferencias = cuentaOrigen.getTransferencias();
+            transferencias.add(objTransferencia);
+        } else {
+            System.out.println("Saldo insuficientes");
         }
 
-        String opcion = leer.nextLine();
 
-        System.out.println("¿Que monto desea transferir?");
-        objTransferencia.setMonto(leer.nextDouble());
-
-        for (Banco banco : bancos) {
-            for (Cuenta cuenta : banco.getCuentas()) {
-                if (!cuenta.getNumCta().equals(opcion)) {
-                    cuenta.setSaldo(cuenta.getSaldo() - objTransferencia.getMonto());
-
-                } else {
-                    System.out.println("Ha seleccionado su propia cuenta");
-                }
-
-            }
-
-        }
-        for (Banco banco : bancos) {
-            for (Cuenta cuenta : banco.getCuentas()) {
-                if (cuenta.getNumCta().equals(opcion)) {
-                    cuenta.setSaldo(cuenta.getSaldo() + objTransferencia.getMonto());
-
-
-                }
-
-            }
-
-        }
-        return objTransferencia;
     }
 
-    public void hacerTransferencia(boolean b) {
-    }
+
 }

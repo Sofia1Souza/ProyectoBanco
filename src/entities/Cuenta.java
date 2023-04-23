@@ -1,5 +1,6 @@
-package entity;
+package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public  class Cuenta {
@@ -7,28 +8,25 @@ public  class Cuenta {
     private String numCta;
     private double saldo ;
     private Cliente cliente;
-    private int sucursal;
-    private List<Transferencia> transferencias;
+    private int numSucursal;
+    private List<Transferencia> transferencias =new ArrayList();
 
     public Cuenta() {
     }
 
-
-
-    public Cuenta(String numCta, double saldo, Cliente cliente, int sucursal, List<Transferencia> transferencias) {
+    public Cuenta(String numCta, double saldo, Cliente cliente, int sucursal) {
         this.numCta = numCta;
         this.saldo = saldo;
         this.cliente = cliente;
-        this.sucursal = sucursal;
-        this.transferencias = transferencias;
+        this.numSucursal = sucursal;
     }
 
-    public int getSucursal() {
-        return sucursal;
+    public int getNumSucursal() {
+        return numSucursal;
     }
 
-    public void setSucursal(int sucursal) {
-        this.sucursal = sucursal;
+    public void setNumSucursal(int numSucursal) {
+        this.numSucursal = numSucursal;
     }
 
     public String getNumCta() {

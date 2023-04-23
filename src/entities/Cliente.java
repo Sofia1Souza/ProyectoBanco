@@ -1,23 +1,18 @@
-package entity;
-
-import java.util.ArrayList;
-import java.util.List;
+package entities;
 
 public class Cliente {
     private String nombre;
     private String apellido;
     private String dni;
-
     private Cuenta cuenta;
 
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellido, String dni, Cuenta cuenta) {
+    public Cliente(String nombre, String apellido, String dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.cuenta = cuenta;
     }
 
     public String getNombre() {

@@ -66,7 +66,7 @@ public  class Cuenta {
         return "Cuenta{" +
                 "numCta='" + numCta + '\'' +
                 ", saldo=" + saldo +
-               ", cliente=" + cliente +
+               //", cliente=" + cliente +
                 ", transferencias=" + transferencias +
                 '}';
     }

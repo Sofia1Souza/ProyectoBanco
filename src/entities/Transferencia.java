@@ -64,10 +64,10 @@ public class Transferencia {
 
  @Override
  public String toString() {
-  return "Transferencia{" +
+  return "\n"+"Transferencia{" +
           "numTransferencia=" + numTransferencia +
-          ", cuentaOrigen=" + cuentaOrigen +
-          ", ctaDestino=" + ctaDestino +
+         // ", cuentaOrigen=" + cuentaOrigen +
+         // ", ctaDestino=" + ctaDestino +
           ", monto=" + monto +
           ", fechaTransferencia=" + fechaTransferencia +
           '}';

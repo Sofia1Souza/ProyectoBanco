@@ -3,29 +3,38 @@ package service;
 import entities.Banco;
 import entities.Cuenta;
 import entities.Transferencia;
+import org.w3c.dom.ls.LSOutput;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
 public class TransferenciaService {
     BancoService objBancoService = new BancoService();
+    Scanner leer = new Scanner(System.in);
 
-    public void hacerTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto) {
+    public Transferencia hacerTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino) {
+           Transferencia objTransferencia=null;
 
-        if (cuentaOrigen.getSaldo() >= monto) {
-            cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - monto);
-            cuentaDestino.setSaldo(cuentaDestino.getSaldo() + monto);
+        System.out.println("Ingrese el monto que desea transferir");
+        double montoTransferencia= leer.nextDouble();
+
+        if (cuentaOrigen.getSaldo() >= montoTransferencia) {
+            cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - montoTransferencia);
+            cuentaDestino.setSaldo(cuentaDestino.getSaldo() + montoTransferencia);
 
             int numTransferencia = new Random().nextInt(100) + 1;
-            Transferencia objTransferencia = new Transferencia(numTransferencia, cuentaOrigen, cuentaDestino, monto);
-            List<Transferencia> transferencias = cuentaOrigen.getTransferencias();
-            transferencias.add(objTransferencia);
+           objTransferencia = new Transferencia(numTransferencia, cuentaOrigen, cuentaDestino,montoTransferencia);
+           cuentaOrigen.getTransferencias().add(objTransferencia);
+            cuentaDestino.getTransferencias().add(objTransferencia);
+
+            System.out.println("Transferencia exitosa");
         } else {
             System.out.println("Saldo insuficientes");
         }
 
-
+   return objTransferencia;
     }
 
 

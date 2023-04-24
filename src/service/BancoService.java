@@ -8,42 +8,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BancoService {
-    List<Cuenta> cuentas = new ArrayList<Cuenta>();
+    List<Cliente> clientes = new ArrayList();
     List<Banco> bancos = new ArrayList<Banco>();
 
     ClienteService objClienteService = new ClienteService();
 
     public void crearBanco(int sucursal, String direccion) {
 
-        Banco objBanco1 = new Banco();
-        objBanco1.setNumSucursal(sucursal);
-        objBanco1.setDireccion(direccion);
+        Banco objBanco = new Banco();
+        objBanco.setNumSucursal(sucursal);
+        objBanco.setDireccion(direccion);
 
-        Banco objBanco2 = new Banco();
-        objBanco2.setNumSucursal(sucursal);
-        objBanco2.setDireccion(direccion);
+        bancos.add(objBanco);
 
-        bancos.add(objBanco1);
-        bancos.add(objBanco2);
 
     }
 
-    public void agregarInfo(Cliente cliente) {
-        int numSucursalCliente = cliente.getCuenta().getNumSucursal();
+     public void mostrarBanco(){
+         System.out.println("Se han generado las sucursales y clientes:");
+         for (Banco banco:bancos) {
+             System.out.print( "Sucursal:" +banco.getNumSucursal());
+             System.out.print(" ");
+             System.out.print("Banco:"+banco.getDireccion());
+             System.out.println("");
 
-        for (Banco banco : bancos) {
-            if (numSucursalCliente == banco.getNumSucursal()) {
-               List<Cliente> clientes= banco.getClientes();
-               clientes.add(cliente);
-               List<Cuenta>cuentas= banco.getCuentas();
-                cuentas.add(cliente.getCuenta());
+         }
+     }
+
+    public Cliente agregarCliente(String nombre, String apellido, String dni) {
+        Cliente cliente = objClienteService.CrearCliente(nombre, apellido, dni);
+        clientes.add(cliente);
+        return cliente;
+
+    }
+
+        public void mostrarCliente() {
+            for (Cliente cliente : clientes) {
+                System.out.println(cliente);
             }
 
         }
 
+
     }
 
 
 
-}
+
 

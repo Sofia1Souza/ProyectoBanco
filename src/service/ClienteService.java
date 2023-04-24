@@ -3,7 +3,6 @@ package service;
 import entities.Cliente;
 import entities.Cuenta;
 
-import java.util.Scanner;
 
 public class ClienteService {
 

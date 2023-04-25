@@ -9,6 +9,7 @@ public class Transferencia {
  private Cuenta ctaDestino;
  private double monto;
  private LocalDate fechaTransferencia;
+ private String detalle;
 
 
  public Transferencia() {
@@ -20,6 +21,7 @@ public class Transferencia {
   this.ctaDestino = ctaDestino;
   this.monto = monto;
   this.fechaTransferencia = LocalDate.now();
+
  }
 
  public int getNumTransferencia() {
@@ -62,17 +64,20 @@ public class Transferencia {
   this.fechaTransferencia = fechaTransferencia;
  }
 
+ public String getDetalle() {
+  return detalle;
+ }
+
+ public void setDetalle(String detalle) {
+  this.detalle = detalle;
+ }
+
  @Override
  public String toString() {
-  return "\n"+"Transferencia{" +
-          "numTransferencia=" + numTransferencia +
-         // ", cuentaOrigen=" + cuentaOrigen +
-         // ", ctaDestino=" + ctaDestino +
-          ", monto=" + monto +
-          ", fechaTransferencia=" + fechaTransferencia +
-          '}';
+  return  detalle;
  }
 }
+
 
 
 

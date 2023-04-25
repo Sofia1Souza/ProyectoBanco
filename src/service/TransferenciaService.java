@@ -1,41 +1,80 @@
 package service;
 
-import entities.Banco;
+
 import entities.Cuenta;
 import entities.Transferencia;
-import org.w3c.dom.ls.LSOutput;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class TransferenciaService {
-    BancoService objBancoService = new BancoService();
     Scanner leer = new Scanner(System.in);
 
     public Transferencia hacerTransferencia(Cuenta cuentaOrigen, Cuenta cuentaDestino) {
-           Transferencia objTransferencia=null;
+        Transferencia objTransferencia = null;
+        Double montoTransferencia = null;
 
-        System.out.println("Ingrese el monto que desea transferir");
-        double montoTransferencia= leer.nextDouble();
+        do {
+            try {
+                System.out.println("");
+                System.out.println("Ingrese el monto que desea transferir");
+                montoTransferencia = leer.nextDouble();
+
+
+            } catch (InputMismatchException e) {
+                System.out.println("no puede ingresar caracteres");
+                leer.nextLine();
+            }
+
+        } while (montoTransferencia == null);
+
 
         if (cuentaOrigen.getSaldo() >= montoTransferencia) {
-            cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - montoTransferencia);
-            cuentaDestino.setSaldo(cuentaDestino.getSaldo() + montoTransferencia);
 
-            int numTransferencia = new Random().nextInt(100) + 1;
-           objTransferencia = new Transferencia(numTransferencia, cuentaOrigen, cuentaDestino,montoTransferencia);
-           cuentaOrigen.getTransferencias().add(objTransferencia);
-            cuentaDestino.getTransferencias().add(objTransferencia);
+            if (montoTransferencia > 0) {
+                cuentaOrigen.setSaldo(cuentaOrigen.getSaldo() - montoTransferencia);
+                cuentaDestino.setSaldo(cuentaDestino.getSaldo() + montoTransferencia);
 
-            System.out.println("Transferencia exitosa");
-        } else {
-            System.out.println("Saldo insuficientes");
+                int numTransferencia = new Random().nextInt(100) + 1;
+
+                objTransferencia = new Transferencia(numTransferencia, cuentaOrigen, cuentaDestino, montoTransferencia);
+                objTransferencia.setDetalle(detalleTransferencia(objTransferencia));
+                cuentaOrigen.getTransferencias().add(objTransferencia);
+                cuentaDestino.getTransferencias().add(objTransferencia);
+
+                System.out.println("Transferencia exitosa!!");
+
+            } else {
+                System.out.println("No puede ingresar un monto negativo");
+            }
+
+            }else{
+            System.out.println("Saldo insuficiente");
+
         }
+        System.out.println();
+        System.out.println("El monto que le queda en su cuenta es:" + cuentaOrigen.getSaldo());
+        System.out.println("--------------------------------------------");
 
-   return objTransferencia;
+      return objTransferencia;
+    }
+
+    public String detalleTransferencia( Transferencia transferencia){
+        String detalle = "\n" +
+                " --------COMPROBANTE DE TRANSFERENCIA:-------" + "\n" +
+                "Fecha: " + transferencia.getFechaTransferencia() + "\n" +
+                "Numero de operacion: " + transferencia.getNumTransferencia() + "\n" +
+                "Cuenta de origen: " + transferencia.getCuentaOrigen().getNumCta() + "\n" +
+                "Nombre titular: " + transferencia.getCuentaOrigen().getCliente()+ "\n" +
+                "Cuenta de destino: " + transferencia.getCtaDestino().getNumCta();
+
+        return detalle;
     }
 
 
-}
+    }
+
+
+

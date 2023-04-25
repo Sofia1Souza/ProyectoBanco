@@ -56,9 +56,9 @@ public class Banco {
 
     @Override
     public String toString() {
-        return  "\n"+"Banco{" +
-                "numSucursal=" + numSucursal +
-                ", direccion='" + direccion + '\'' +
+        return  "\n"+"Banco Bross{" +
+                "NumSucursal=" + numSucursal +
+                ", Direccion='" + direccion + '\'' +
                 ", clientes=" + clientes +
                 ", cuentas=" + cuentas +
                 '}';

@@ -49,10 +49,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "\n"+"Cliente{" +
-                "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni='" + dni + '\'' +
+        return ""+"Cliente:" +
+                "Nombre='" + nombre + '\'' +
+                ", Apellido='" + apellido + '\'' +
+                ", Dni='" + dni + '\'' +
                 ", cuenta=" + cuenta +
                 '}';
     }
